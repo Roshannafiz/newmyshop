@@ -7,7 +7,7 @@ use App\Models\Cart;
 use App\Models\ProductsAttribute;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -74,9 +74,18 @@ class CartController extends Controller
 
 
 
+            if (Auth::check()) {
+                $user_id = Auth::user()->id;
+            } else {
+                $user_id = 0;
+            }
+
+
+
             // Save Product In Cart
             $cart = new Cart();
             $cart->session_id = $session_id;
+            $cart->user_id = $user_id;
             $cart->product_id = $data['product_id'];
             $cart->size = $data['size'];
             $cart->quantity = $data['quantity'];

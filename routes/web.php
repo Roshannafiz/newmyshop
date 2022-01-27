@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ShopController;
+use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/shop', [ShopController::class, 'index']);
 Route::get('/cart', [App\Http\Controllers\Frontend\CartController::class, 'index']);
+/*-------------------------------------------------------
+ Frontend Route Here -- User Login / Register
+|-------------------------------------------------------*/
+// Login / Register View
+Route::get('/login', [UserController::class, 'login_view']);
+Route::get('/register', [UserController::class, 'register_view']);
+
+// User Login Register / Logout In Database
+Route::post('/register_user', [UserController::class, 'register_user']);
+Route::match(['get', 'post'], '/check-email', [UserController::class, 'check_email']);
+
+Route::post('/login_user', [UserController::class, 'login_user']);
+Route::get('/logout-user', [UserController::class, 'logout_user']);
+
 
 
 // Product Detail Page
