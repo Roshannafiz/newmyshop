@@ -23,8 +23,6 @@
                                     <a href="{{ url('/') }}"
                                         class="btn btn-upper btn-primary outer-left-xs">Continue
                                         Shopping</a>
-                                    <a href="#" class="btn btn-upper btn-primary pull-right outer-right-xs">Update
-                                        shopping cart</a>
                                 </span>
                             </div>
                         </td>
@@ -43,14 +41,14 @@
                             </td>
 
                             <td class="cart-image">
-                                <a class="entry-thumbnail" href="detail.html">
+                                <a class="entry-thumbnail" href="{{ url('product_view/' . $userCartItem['product']['id']) }}">
                                     <img src="{{ asset('admin/images/upload-product/small/' . $userCartItem['product']['main_image']) }}"
                                         alt="">
                                 </a>
                             </td>
                             <td class="cart-product-name-info">
                                 <h4 class='cart-product-description'>
-                                    <a href="detail.html">
+                                    <a href="{{ url('product_view/' . $userCartItem['product']['id']) }}">
                                         {{ $userCartItem['product']['product_name'] }}
                                     </a>
                                 </h4>

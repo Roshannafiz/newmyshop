@@ -1,4 +1,7 @@
-<?php use App\Models\Product; ?>
+<?php
+use App\Models\Product;
+use App\Models\Wishlist;
+?>
 <!-- ============================================== New PRODUCTS: START ============================================== -->
 <div class="container">
     <section class="section featured-product wow fadeInUp">
@@ -31,7 +34,8 @@
                                     <span class="price">
                                         @if ($discounted_price > 0)
                                             <del>${{ $newProduct['product_seal_price'] }}</del>
-                                            <span style="color: #59B210; font-size: 17px">${{ $discounted_price }}</span>
+                                            <span
+                                                style="color: #59B210; font-size: 17px">${{ $discounted_price }}</span>
                                         @else
                                             ${{ $newProduct['product_seal_price'] }}
                                         @endif
@@ -43,22 +47,9 @@
                                 <div class="action">
                                     <ul class="list-unstyled">
                                         <li class="add-cart-button btn-group">
-                                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <button class="btn btn-primary cart-btn" type="button">
-                                                Add to cart
-                                            </button>
-                                        </li>
-                                        <!-------- Wishlist Button ----->
-                                        <li class="lnk wishlist">
-                                            <button type="button" class="add-to-cart" title="Wishlist">
-                                                <i class="icon fa fa-heart"></i>
-                                            </button>
-                                        </li>
-                                        <li class="lnk">
-                                            <a class="add-to-cart" href="detail.html" title="Compare">
-                                                <i class="fa fa-signal" aria-hidden="true"></i>
+                                            <a href="{{ url('product_view/' . $newProduct['id']) }}"
+                                                style="text-align: center" class="btn btn-primary icon">
+                                                <i class="far fa-eye"></i>
                                             </a>
                                         </li>
                                     </ul>

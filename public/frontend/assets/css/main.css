@@ -3751,7 +3751,7 @@ header {
     left: 0px;
 }
 .cart .action {
-    float: left;
+    float: right;
 }
 .cart .action .add-cart-button .btn.btn-primary.icon {
     border-bottom-right-radius: 0;

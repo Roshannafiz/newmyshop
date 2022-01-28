@@ -5,7 +5,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="cart-description item" >Image</th>
+                        <th class="cart-description item">Image</th>
                         <th class="cart-product-name item" style="text-align: left">Product Name</th>
                         <th class="cart-sub-total item">Price</th>
                         <th class="cart-romove item">Remove</th>
@@ -17,14 +17,15 @@
                         <tr>
 
                             <td class="cart-image">
-                                <a class="entry-thumbnail" href="#">
+                                <a class="entry-thumbnail"
+                                    href="{{ url('product_view/' . $userWishlistItem['products']['id']) }}">
                                     <img src="{{ asset('admin/images/upload-product/large/' . $userWishlistItem['products']['main_image']) }}"
                                         alt="">
                                 </a>
                             </td>
                             <td class="cart-product-name-info">
                                 <h4 class="cart-product-description" style="text-align: left">
-                                    <a href="#">
+                                    <a href="{{ url('product_view/' . $userWishlistItem['products']['id']) }}">
                                         {{ $userWishlistItem['products']['product_name'] }}
                                     </a>
                                 </h4>
