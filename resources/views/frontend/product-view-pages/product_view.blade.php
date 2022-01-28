@@ -127,7 +127,7 @@
                                                                 <select name="size" required id="getPrice"
                                                                     product-id="{{ $productDetails['id'] }}"
                                                                     class="form-control">
-                                                                    <option value="">Select Size</option>
+                                                                    {{-- <option value="">Select Size</option> --}}
                                                                     @foreach ($productDetails['attributes'] as $attribute)
                                                                         <option value="{{ $attribute['size'] }}">
                                                                             {{ $attribute['size'] }}</option>

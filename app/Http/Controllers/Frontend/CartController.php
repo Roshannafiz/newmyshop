@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Product;
 use App\Models\ProductsAttribute;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -33,12 +35,12 @@ class CartController extends Controller
                 'product_id' => $data['product_id'],
                 'size' => $data['size'],
             ])->first()->toArray();
+
+
             if ($getProductstock['stock'] < $data['quantity']) {
                 return redirect()->back()->with('error_message', "Requered Quantity Not Avaiable !");
             }
-
-
-
+            
 
             // Generate Session ID If Not Exixts
             $session_id = Session::get('session_id');
@@ -79,7 +81,6 @@ class CartController extends Controller
             } else {
                 $user_id = 0;
             }
-
 
 
             // Save Product In Cart

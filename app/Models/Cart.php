@@ -17,7 +17,7 @@ class Cart extends Model
     public static function userCartItems()
     {
         if (Auth::check()) {
-            $userCartItems = Cart::with('product')->where('user_id', Auth::user_id()->id)->get()->toArray();
+            $userCartItems = Cart::with('product')->where('user_id', Auth::user()->id)->get()->toArray();
         } else {
             $userCartItems = Cart::with('product')->where('session_id', Session::get('session_id'))->get()->toArray();
         }
