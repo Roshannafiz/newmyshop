@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,21 +34,31 @@ Route::get('/cart', [App\Http\Controllers\Frontend\CartController::class, 'index
 /*-------------------------------------------------------
  Frontend Route Here -- User Login / Register
 |-------------------------------------------------------*/
+
+// This Route Only Login User
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/my_account', [UserController::class, 'my_account_view']);
+  Route::match(['get', 'post'], '/edit_profile', [UserController::class, 'edit_profile']);
+  // Add To Wishlist / View / Delete
+  Route::get('/wishlist', [WishlistController::class, 'index']);
+  Route::post('/update-wishlist', [WishlistController::class, 'update_wishlist']);
+  Route::post('/delete-wishlist-item', [WishlistController::class, 'delete_wishlist']);
+});
+
 // Login / Register View
-Route::get('/login', [UserController::class, 'login_view']);
+Route::get('/login', [UserController::class, 'login_view'])->name('login');
 Route::get('/register', [UserController::class, 'register_view']);
 
 // User Login Register / Logout In Database
 Route::post('/register_user', [UserController::class, 'register_user']);
 Route::match(['get', 'post'], '/check-email', [UserController::class, 'check_email']);
-
 Route::post('/login_user', [UserController::class, 'login_user']);
 Route::get('/logout-user', [UserController::class, 'logout_user']);
 
 
 
 // Product Detail Page
-Route::get('/product_view/{id}', [App\Http\Controllers\Frontend\ProductController::class, 'product_detail']);
+Route::match(['get', 'post'], '/product_view/{id}', [App\Http\Controllers\Frontend\ProductController::class, 'product_detail']);
 
 // Get Product Attribute Price / Change Price When Change Size
 Route::post('/get-product-price', [App\Http\Controllers\Frontend\ProductController::class, 'getProductPrice'])->name('get-product-price');

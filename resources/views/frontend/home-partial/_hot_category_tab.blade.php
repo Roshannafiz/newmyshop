@@ -28,19 +28,16 @@
                                             <div class="product">
                                                 <div class="product-image">
                                                     <div class="image">
-                                                        <a href="detail.html"><img
+                                                        <a href="{{ url('product_view/' . $products_by_category->id) }}"><img
                                                                 src="{{ asset('admin/images/upload-product/large/' . $products_by_category->main_image) }}"
                                                                 alt="" /></a>
                                                     </div>
-                                                    <!-- /.image -->
-
-                                                    <div class="tag new"><span>new</span></div>
                                                 </div>
                                                 <!-- /.product-image -->
 
                                                 <div class="product-info text-left">
                                                     <h3 class="name">
-                                                        <a href="#">
+                                                        <a href="{{ url('product_view/' . $products_by_category->id) }}">
                                                             {{ $products_by_category->product_name }}
                                                         </a>
                                                     </h3>

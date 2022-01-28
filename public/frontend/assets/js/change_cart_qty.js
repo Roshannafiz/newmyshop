@@ -62,4 +62,22 @@ $(document).ready(function () {
             },
         });
     });
+
+    // Delete Wishlist Item
+    $(document).on("click", ".wishlistItemDelete", function () {
+        var wishlistid = $(this).data("wishlistid");
+        $.ajax({
+            type: "post",
+            url: "/delete-wishlist-item",
+            data: {
+                wishlistid: wishlistid,
+            },
+            success: function (response) {
+                $("#AppendWishlistItems").html(response.view);
+            },
+            error: function () {
+                alert("Error");
+            },
+        });
+    });
 });

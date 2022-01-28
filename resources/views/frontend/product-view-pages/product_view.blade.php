@@ -1,4 +1,7 @@
-<?php use App\Models\Product; ?>
+<?php
+use App\Models\Product;
+use App\Models\Wishlist;
+?>
 @extends('frontend.Layouts')
 
 @section('content')
@@ -38,7 +41,7 @@
                                                         <img class="img-responsive" alt=""
                                                             src="{{ asset('admin/images/upload-product/large/' . $productDetails['main_image']) }}"
                                                             data-echo="
-                                                                                                                                                                                                        {{ asset('admin/images/upload-product/large/' . $productDetails['main_image']) }}" />
+                                                                                                                                                                                                                                                                            {{ asset('admin/images/upload-product/large/' . $productDetails['main_image']) }}" />
                                                     </a>
                                                 </div>
                                             </div>
@@ -138,10 +141,28 @@
 
                                                         <div class="col-sm-6" style="margin-top: 45px">
                                                             <div class="favorite-button m-t-10">
-                                                                <a class="btn btn-primary" data-toggle="tooltip"
-                                                                    data-placement="right" title="Wishlist" href="#">
-                                                                    <i class="fa fa-heart"></i>
-                                                                </a>
+                                                                <!------ Delails Wishlist ----->
+                                                                @php
+                                                                    $countWishlist = 0;
+                                                                @endphp
+                                                                @if (Auth::check())
+                                                                    @php
+                                                                        $countWishlist = Wishlist::countWishlist($productDetails['id']);
+                                                                    @endphp
+                                                                    <button type="button" style="outline: none"
+                                                                        class="btn btn-primary updateWishlist"
+                                                                        data-productid="{{ $productDetails['id'] }}">
+                                                                        @if ($countWishlist > 0)
+                                                                            <i class="fa fa-heart"></i>
+                                                                        @else
+                                                                            <i class="far fa-heart"></i>
+                                                                        @endif
+                                                                    </button>
+                                                                @else
+                                                                    <a href="{{ url('login') }}" class="btn btn-primary">
+                                                                        <i class="fa fa-heart"></i>
+                                                                    </a>
+                                                                @endif
                                                                 <a class="btn btn-primary" data-toggle="tooltip"
                                                                     data-placement="right" title="Add to Compare" href="#">
                                                                     <i class="fa fa-signal"></i>
@@ -175,7 +196,7 @@
                                                         <input type="hidden" value="{{ $productDetails['id'] }}"
                                                             name="product_id">
                                                         <div class="col-sm-7">
-                                                            <button type="submit" class="btn btn-primary">
+                                                            <button type="submit" class="btn btn-primary" style="outline: none">
                                                                 <i class="fa fa-shopping-cart inner-right-vs"></i>
                                                                 ADD TO CART
                                                             </button>
@@ -251,12 +272,21 @@
 
                                                                 </li>
 
-                                                                <li class="lnk wishlist">
-                                                                    <a class="add-to-cart" href="detail.html"
-                                                                        title="Wishlist">
-                                                                        <i class="icon fa fa-heart"></i>
-                                                                    </a>
-                                                                </li>
+                                                                <!---------- Wishlist Button ------->
+                                                                @if (Auth::check())
+                                                                    <li class="">
+                                                                        <button type="button" class="add-to-cart"
+                                                                            title="Wishlist">
+                                                                            <i class="icon fa fa-heart"></i>
+                                                                        </button>
+                                                                    </li>
+                                                                @else
+                                                                    <li class="lnk wishlist">
+                                                                        <a href="#" class="add-to-cart" title="Wishlist">
+                                                                            <i class="icon fa fa-heart"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                @endif
 
                                                                 <li class="lnk">
                                                                     <a class="add-to-cart" href="detail.html"

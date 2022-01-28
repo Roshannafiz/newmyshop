@@ -38,7 +38,7 @@
 
                             <td class="romove-item">
                                 <button data-cartid="{{ $userCartItem['id'] }}" type="button" class="icon btnItemDelete" style="border: none; font-size: 20px">
-                                    <i class="fa fa-trash-o"></i>
+                                    <i class="far fa-trash-alt"></i>
                                 </button>
                             </td>
 

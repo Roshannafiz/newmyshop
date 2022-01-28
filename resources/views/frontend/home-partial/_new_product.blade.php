@@ -50,10 +50,11 @@
                                                 Add to cart
                                             </button>
                                         </li>
+                                        <!-------- Wishlist Button ----->
                                         <li class="lnk wishlist">
-                                            <a class="add-to-cart" href="detail.html" title="Wishlist">
+                                            <button type="button" class="add-to-cart" title="Wishlist">
                                                 <i class="icon fa fa-heart"></i>
-                                            </a>
+                                            </button>
                                         </li>
                                         <li class="lnk">
                                             <a class="add-to-cart" href="detail.html" title="Compare">

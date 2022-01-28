@@ -19,6 +19,12 @@
  <!-------------- Change Cart Quantity Usign Ajax ----------->
  <script src="{{ asset('frontend/assets/js/change_cart_qty.js') }}"></script>
 
+ <!-------------- Add Product Wishlist ----------->
+ <script src="{{ asset('frontend/assets/js/add_to_wishlist.js') }}"></script>
+
+ <!-------- Font Awosome -------->
+ <script src="{{ asset('frontend/assets/js/fontawesome.all.min.js') }}"></script>
+
  <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
  <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
 

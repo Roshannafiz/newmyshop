@@ -48,4 +48,45 @@ $().ready(function () {
             },
         },
     });
+
+
+
+    // Validate My Account Edit Form On Keyup And Submit
+    $("#MyAccountForm").validate({
+        rules: {
+            name: "required",
+            address: "required",
+            state: "required",
+            city: "required",
+            country: "required",
+            pincode: "required",
+            mobile: {
+                required: true,
+                minlength: 10,
+                maxlength: 11,
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            agree: "required",
+        },
+        messages: {
+            name: "Please enter your name",
+            address: "Please enter your address",
+            state: "Please enter your state",
+            city: "Please enter your address",
+            country: "Please enter your address",
+            pincode: "Please enter your address",
+            mobile: {
+                required: "Please enter your mobile",
+                minlength: "Your mobile must be at least 10 characters long",
+                maxlength: "Your mobile must be at least 10 characters long",
+            },
+            email: {
+                required: "Please enter your email",
+                email: "Please enter a valid email address",
+            },
+        },
+    });
 });

@@ -40,7 +40,7 @@ class CartController extends Controller
             if ($getProductstock['stock'] < $data['quantity']) {
                 return redirect()->back()->with('error_message', "Requered Quantity Not Avaiable !");
             }
-            
+
 
             // Generate Session ID If Not Exixts
             $session_id = Session::get('session_id');
@@ -78,8 +78,9 @@ class CartController extends Controller
 
             if (Auth::check()) {
                 $user_id = Auth::user()->id;
+                $session_id = null;
             } else {
-                $user_id = 0;
+                $user_id = null;
             }
 
 
